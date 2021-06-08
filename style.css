@@ -2,7 +2,7 @@
 
 :root {
   --primary-color: #7c59b0;
-  --border-radius: 5px;
+  --border-radius: 25px;
 }
 
 html {
@@ -126,6 +126,69 @@ a:active {
   to {
     opacity: 1;
   }
+}
+
+.close-icon {
+  float: right;
+  color: rgba(216, 15, 15, 0.803);
+  position: relative;
+  top: 13px;
+  right: 13px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.modal-header {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 15px;
+}
+
+h3 {
+  margin: 0;
+}
+
+.modal-content {
+  background-color: whitesmoke;
+  padding: 20px;
+}
+
+/* Form */
+.form-group {
+  height: 55px;
+}
+
+.form-input {
+  width: 97%;
+  padding: 5px;
+  border: 2px solid var(--primary-color);
+  border-radius: var(--border-radius);
+  display: block;
+  outline: none;
+}
+
+.form-label {
+  color: var(--primary-color);
+  display: block;
+}
+
+button {
+  cursor: pointer;
+  color: white;
+  background-color: var(--primary-color);
+  border: none;
+  height: 30px;
+  width: 100px;
+  border-radius: var(--border-radius);
+  margin-top: 10px;
+}
+
+button:hover {
+  filter: brightness(110%);
+}
+
+button:focus {
+  outline: none;
 }
 
 /* Media Queries : Large Smartphone (vertical) */
