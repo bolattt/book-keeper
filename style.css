@@ -86,10 +86,46 @@ a:active {
   cursor: pointer;
   z-index: 2;
   color: rgba(216, 15, 15, 0.803);
+  transition: all 0.2s ease-in-out;
 }
+
 .fa-times:hover {
   filter: brightness(120%);
-  font-size: 110%;
+  transform: scale(1.2);
+}
+
+/* Modal */
+.modal-container {
+  background-color: rgba(0, 0, 0, 0.6);
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.show-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  max-width: 500px;
+  width: 95%;
+  animation: modalopen 1s;
+}
+
+@keyframes modalopen {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* Media Queries : Large Smartphone (vertical) */
