@@ -6,6 +6,8 @@ const websiteNameEl = document.getElementById("website-name");
 const websiteUrlEl = document.getElementById("website-url");
 const bookmarksConatiner = document.getElementById("bookmarks-container");
 
+let bookmarks = [];
+
 // Show Modal , Focus on input
 function showModal() {
   modal.classList.add("show-modal");
@@ -47,7 +49,6 @@ function validate(nameValue, urlValue) {
 // Handle Data from Form
 function storeBookmark(e) {
   e.preventDefault();
-  console.log(e);
   const nameValue = websiteNameEl.value;
   let urlValue = websiteUrlEl.value;
   if (!urlValue.includes("http://") && !urlValue.includes("https://")) {
@@ -56,6 +57,16 @@ function storeBookmark(e) {
   if (!validate(nameValue, urlValue)) {
     return false;
   }
+
+  const bookmark = {
+    name: nameValue,
+    url: urlValue,
+  };
+  bookmarks.push(bookmark);
+  console.log(bookmarks);
+  localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+  bookmarkForm.reset();
+  websiteNameEl.focus();
 }
 
 // Event Listeners
