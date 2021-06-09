@@ -12,7 +12,7 @@ function showModal() {
   websiteNameEl.focus();
 }
 
-// Event Listeners
+// Modal Event Listeners
 modalShow.addEventListener("click", showModal);
 modalClose.addEventListener("click", () => {
   modal.classList.remove("show-modal");
@@ -20,3 +20,18 @@ modalClose.addEventListener("click", () => {
 window.addEventListener("click", (e) => {
   e.target === modal ? modal.classList.remove("show-modal") : false;
 });
+
+// Handle Data from Form
+function storeBookmark(e) {
+  e.preventDefault();
+  console.log(e);
+  const nameValue = websiteNameEl.value;
+  let urlValue = websiteUrlEl.value;
+  if (!urlValue.includes("http://") && !urlValue.includes("https://")) {
+    urlValue = `https://${urlValue}`;
+  }
+  console.log(urlValue);
+}
+
+// Event Listeners
+bookmarkForm.addEventListener("submit", storeBookmark);
