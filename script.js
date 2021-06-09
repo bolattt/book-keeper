@@ -47,6 +47,8 @@ function validate(nameValue, urlValue) {
 
 // Build bookmarks DOM
 function buildBookmarks() {
+  // Remove all bookmark elements
+  bookmarksContainer.textContent = "";
   // Build Items
   bookmarks.forEach((bookmark) => {
     const { name, url } = bookmark;
@@ -65,7 +67,7 @@ function buildBookmarks() {
     const favicon = document.createElement("img");
     favicon.setAttribute(
       "src",
-      "https://github.com/bolattt/joke-teller/blob/main/fav.png?raw=true"
+      `https://s2.googleusercontent.com/s2/favicons?domain=${url}`
     );
     favicon.setAttribute("alt", "Favicon");
     // Link
@@ -97,6 +99,19 @@ function fetchBookmarks() {
     localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
   }
   buildBookmarks();
+}
+
+// Delete Bookmark
+function deleteBookmark(url) {
+  bookmarks.forEach((bookmark, i) => {
+    if (bookmark.url === url) {
+      bookmarks.splice(i, 1);
+    }
+  });
+
+  // Update bookmarks array in localStorage, re-populateDOm
+  localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+  fetchBookmarks();
 }
 
 // Handle Data from Form

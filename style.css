@@ -46,6 +46,7 @@ h1:hover {
   border-radius: var(--border-radius);
   padding: 20px;
   margin: 10px;
+  width: 130px;
 }
 
 .item:hover {
@@ -70,8 +71,8 @@ a:active {
 }
 
 .name {
-  margin-top: 8px;
-  margin-right: 30px;
+  margin-top: auto;
+  margin-right: 40px;
 }
 
 .name img {
@@ -195,5 +196,8 @@ button:focus {
 @media screen and (max-width: 600px) {
   .container {
     flex-direction: column;
+  }
+  .item {
+    width: unset;
   }
 }
