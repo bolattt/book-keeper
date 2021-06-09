@@ -46,6 +46,24 @@ function validate(nameValue, urlValue) {
   return true;
 }
 
+// Fetch Bookmarks
+function fetchBookmarks() {
+  // Get Bookmarks from localStorage if available
+  if (localStorage.getItem("bookmarks")) {
+    bookmarks = JSON.parse(localStorage.getItem("bookmarks"));
+  } else {
+    // Create bookmarks array in localStorage
+    bookmarks = [
+        {
+            name: "My Github";
+            url: "https://github.com/bolattt";
+        }
+    ];
+
+    localStorage.setItem('bookmarks',JSON.stringify(bookmarks))
+  }
+}
+
 // Handle Data from Form
 function storeBookmark(e) {
   e.preventDefault();
@@ -65,9 +83,13 @@ function storeBookmark(e) {
   bookmarks.push(bookmark);
   console.log(bookmarks);
   localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+  fetchBookmarks();
   bookmarkForm.reset();
   websiteNameEl.focus();
 }
 
 // Event Listeners
 bookmarkForm.addEventListener("submit", storeBookmark);
+
+// On Load 
+fetchBookmarks();
