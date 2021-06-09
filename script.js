@@ -21,6 +21,29 @@ window.addEventListener("click", (e) => {
   e.target === modal ? modal.classList.remove("show-modal") : false;
 });
 
+// Validate Form
+function validate(nameValue, urlValue) {
+  const expression =
+    /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/g;
+  const regex = new RegExp(expression);
+  if (!nameValue || !urlValue) {
+    alert("Please submit values for both fields.");
+    return false;
+  }
+  if (urlValue.match(regex)) {
+    alert("match");
+  }
+  if (!urlValue.match(regex)) {
+    alert("Please provide a valid URL");
+    return false;
+  }
+  console.log(nameValue, urlValue);
+  console.log("validate was called");
+
+  // Valid
+  return true;
+}
+
 // Handle Data from Form
 function storeBookmark(e) {
   e.preventDefault();
@@ -30,7 +53,9 @@ function storeBookmark(e) {
   if (!urlValue.includes("http://") && !urlValue.includes("https://")) {
     urlValue = `https://${urlValue}`;
   }
-  console.log(urlValue);
+  if (!validate(nameValue, urlValue)) {
+    return false;
+  }
 }
 
 // Event Listeners
