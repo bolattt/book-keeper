@@ -46,7 +46,7 @@ h1:hover {
   border-radius: var(--border-radius);
   padding: 20px;
   margin: 10px;
-  width: 130px;
+  /* width: 130px; */
 }
 
 .item:hover {
